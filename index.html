@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>音频</title>
+	<link rel="stylesheet" href="index.css">
+	<script src="index.js"></script>
+	<script src="animate.js"></script>
+</head>
+<body>
+	<audio src="./002.mp3" controls="true" style="display:none"></audio>
+	<div class="m_player mini_version" id="divplayer" role="application" style="z-index: 100000; left: 0px;">
+		    <div class="m_player_dock" id="divsongframe">
+		        <div class="music_info" id="divsonginfo">
+		            <a href="javascript:;" onclick="window.frames['contentFrame'].location='http://i.y.qq.com/v8/fcg-bin/fcg_v8_album_detail_cp.fcg?tpl=20&amp;albummid=004S8YQr3UmEbG'" target="contentFrame" class="album_pic" title="Shall We Dance? Shall We Talk!">
+		                <img src="http://imgcache.qq.com/mediastyle/y/img/cover_mine_130.jpg" alt="Shall We Dance? Shall We Talk!" onerror="this.src='http://imgcache.qq.com/mediastyle/y/img/cover_mine_130.jpg'">
+		            </a>
+		            <div class="music_info_main">
+		               
+		                <p class="music_name" title="单车 (我是歌手4第5期李克勤参赛曲目)">
+		                    <span>
+		                        单车 (我是歌手4第5期李克勤参……
+		                    </span>
+		                    <a onclick="g_topPlayer.singleFm.open();" href="javascript:;" class="icon_radio">
+		                        电台
+		                    </a>
+		                </p>
+		                <p class="singer_name" title="陈奕迅">
+		                    陈奕迅
+		                </p>
+		                <p class="play_date" id="ptime">
+		                    03:31
+		                </p>
+		                <p class="music_op" style="display:;">
+		                    <strong class="btn_like" title="喜欢" onclick="g_topPlayer.like(g_topPlayer.getCurSongInfo(), this);MUSIC.event.cancelBubble();" name="myfav_004CU50m2JjBjr" mid="004CU50m2JjBjr">
+		                        <span>
+		                            我喜欢
+		                        </span>
+		                    </strong>
+		                    <strong class="btn_share" title="分享" onclick="g_topPlayer.share(g_topPlayer.getCurSongInfo(), this);MUSIC.event.cancelBubble();">
+		                        <span>
+		                            分享
+		                        </span>
+		                    </strong>
+		                    <strong class="btn_kge" onmouseover="this.className='btn_kge btn_kge_hover';this.style.zIndex='100';" onmouseout="this.className='btn_kge';this.style.zIndex='';" id="btnkge">
+		                        <span>
+		                            唱这首歌
+		                        </span>
+		                        <span class="kge_QRcode">
+		                            <em>
+		                                <img src="http://t.plcloud.music.qq.com/fcgi-bin/fcg_get_2dcode.fcg?width=130&amp;margin=1&amp;eclevel=4&amp;encode=1&amp;url=http%3A%2F%2Fy.qq.com%2Fkg%2Fhtml%2Fcontest%2Forder_dl.html%3F_wv%3D1%26kge_mid%3D0003W9JC1bSgxO" alt="全民K歌二维码">
+		                            </em>
+		                            <em>
+		                                手机扫描二维码，唱这首歌
+		                            </em>
+		                            <i class="kge_QRcode_logo">
+		                            </i>
+		                            <i class="kge_QRcode_arrow">
+		                            </i>
+		                        </span>
+		                    </strong>
+		                </p>
+		            </div>
+		        </div>
+		        <div class="bar_op">
+		            <strong title="上一首( [ )" class="prev_bt" >
+		                <span>
+		                    上一首
+		                </span>
+		            </strong>
+		            <strong title="播放(P)" class="play_bt" id="btnplay" >
+		                <span>
+		                    播放
+		                </span>
+		            </strong>
+		            <strong title="下一首( ] )" class="next_bt" >
+		                <span>
+		                    下一首
+		                </span>
+		            </strong>
+		            <strong title="列表循环" class="cycle_bt" id="btnPlayway"  style="display: block;">
+		                <span>
+		                    列表循环
+		                </span>
+		            </strong>
+		            <p class="volume" title="音量调节">
+		                <span class="volume_icon" id="spanmute" title="点击设为静音(M)">
+		                </span>
+		                <span class="volume_regulate" id="spanvolume">
+		                    <span class="volume_bar" style="width: 100%;" id="spanvolumebar">
+		                    </span>
+		                    <span class="volume_op" style="left: 100%;" id="spanvolumeop">
+		                    </span>
+		                </span>
+		            </p>
+		        </div>
+		        <p class="playbar_cp_select" id="divselect" style="display: none;">
+		            <strong title="顺序播放" class="ordered_bt" onclick="setbofangway(2);">
+		                <span>
+		                    顺序播放
+		                </span>
+		            </strong>
+		            <strong title="随机播放" class="unordered_bt" onclick="setbofangway(4);">
+		                <span>
+		                    随机播放
+		                </span>
+		            </strong>
+		            <strong title="单曲循环" class="cycle_single_bt" onclick="setbofangway(1);">
+		                <span>
+		                    单曲循环
+		                </span>
+		            </strong>
+		            <strong title="列表循环" class="cycle_bt" onclick="setbofangway(3);">
+		                <span>
+		                    列表循环
+		                </span>
+		            </strong>
+		        </p>
+		        <p class="player_bar">
+		            <span class="player_bg_bar" id="spanplayer_bgbar">
+		            </span>
+		            <span class="download_bar" id="downloadbar" style="width: 100%;">
+		            </span>
+		            <span class="play_current_bar" style="width: 0%;" id="spanplaybar">
+		            </span>
+		            <span class="progress_op" style="left: 0%;" id="spanprogress_op">
+		            </span>
+		        </p>
+		        <div class="time_show" style="left: 412px; bottom: 8px; display: none;">
+		            <p id="time_show">
+		                02:49
+		            </p>
+		            <span class="icon_arrow_foot">
+		                <i class="foot_border">
+		                </i>
+		                <i class="foot_arrow">
+		                </i>
+		            </span>
+		        </div>
+		    </div>
+		    
+		    <span title="展开播放列表" class="open_list" id="spansongnum1" style="display: block;">
+		        <span>
+		            9
+		        </span>
+		    </span>
+		    <span title="显示歌词(L)" class="btn_lyrics_disabled" id="btnlrc">
+		        歌词(L)
+		    </span>
+		    <button type="button" class="folded_bt" title="点击收起" id="btnfold">
+		        <span>
+		            点击收起/展开
+		        </span>
+		    </button>
+		    <!--play list-->
+		    <div class="play_list_frame" id="divplayframe" style="display: none; opacity: 1;">
+		        <div class="play_list_title">
+		            <!-- 单曲FM修改 -->
+		            <ul id="tab_container" style="width:270px;">
+		                <li id="playlist_tab" class="current">
+		                    <a href="javascript:;" title="播放列表">
+		                        播放列表
+		                    </a>
+		                    <i>
+		                    </i>
+		                </li>
+		                
+		            </ul>
+		            <span id="clear_list" class="clear_list" onclick="g_topPlayer.clearList();" style="display: block;">
+		                清空列表
+		            </span>
+		            <strong title="收起播放列表" class="close_list" id="btnclose">
+		            </strong>
+		        </div>
+		        <div class="play_list" id="divlistmain">		            <div class="play_list_main" id="divplaylist" style="display: block; left: 0px; top: 0px;">
+		                <!-- 播放列表_S-->
+		                <div class="single_list" id="divsonglist" dirid="0">
+		                    <ul>
+		                        <li mid="j0" class="">
+		                            <strong class="music_name" title="无敌 (《美人鱼》电影宣传曲)">
+		                                无敌 (《美人鱼》电影宣传曲)
+		                            </strong>
+		                            <strong class="singer_name" title="邓超">
+		                                邓超
+		                            </strong>
+		                            <strong class="play_time">
+		                                01:26
+		                            </strong>
+		                            <div class="list_cp">
+		                                
+		                                <strong class="btn_like" title="喜欢" name="myfav_0038RM350w8m1V" mid="0038RM350w8m1V">
+		                                    <span>
+		                                        我喜欢
+		                                    </span>
+		                                </strong>
+		                                <strong class="btn_share" title="分享">
+		                                    <span>
+		                                        分享
+		                                    </span>
+		                                </strong>
+		                                <strong class="btn_fav" title="收藏到歌单">
+		                                    <span>
+		                                        收藏
+		                                    </span>
+		                                </strong>
+		                                <strong class="btn_del" title="从列表中删除">
+		                                    <span>
+		                                        删除
+		                                    </span>
+		                                </strong>
+		                            </div>
+		                        </li>
+		                        
+		                    </ul>
+		                </div>
+		                <div id="divalbumlist" style="display:none;">
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		    
+		</div>
+</body>
+</html>
